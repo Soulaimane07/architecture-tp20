@@ -1,0 +1,32 @@
+server:
+  port: 8081  # Port pour le service client
+
+spring:
+  application:
+    name: SERVICE-CLIENT  # Nom du service tel qu'il apparaîtra dans Eureka
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/clientservicedb?createDatabaseIfNotExist=true
+    username: "root"
+    password: ""
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  # Désactive Spring Cloud Config pour supprimer l'erreur
+  cloud:
+    config:
+      enabled: false
+      import-check:
+        enabled: false
+
+# Configuration Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
